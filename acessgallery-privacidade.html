@@ -37,7 +37,7 @@
 
     <article id="pt-br" lang="pt-BR">
         <h2 class="text-primary">Política de Privacidade — AcessGallery</h2>
-        <p class="text-muted"><strong>Última atualização: 20 de agosto de 2026</strong></p>
+        <p class="text-muted"><strong>Última atualização: 26 de outubro de 2026</strong></p>
 
         <p>O AcessGallery é uma galeria de fotos e vídeos acessível para pessoas cegas e de baixa
         visão. Esta política explica quais dados o aplicativo acessa, como eles são usados e
@@ -52,8 +52,13 @@
         </ul>
 
         <h4 class="mt-4">Dados que o aplicativo acessa</h4>
-        <p>O AcessGallery <strong>não cria conta, não exige login e não coleta identificadores
-        pessoais</strong>. O app não exibe anúncios e não rastreia sua atividade.</p>
+        <p>O AcessGallery <strong>não cria conta e não exige login</strong>. Para a grande
+        maioria dos usuários, o aplicativo também não coleta nenhum identificador pessoal. A
+        única exceção é para assinantes do <strong>Plano Facilitador</strong> (veja "Planos e
+        assinaturas" abaixo): para validar essa assinatura, o servidor do próprio desenvolvedor
+        guarda um identificador do seu aparelho e o token de compra do Google Play (de forma
+        cifrada) — nunca seu nome, e-mail ou CPF. O app não exibe anúncios e não rastreia sua
+        atividade.</p>
         <p>O aplicativo acessa:</p>
         <ul>
             <li><strong>Suas fotos e vídeos</strong>, para exibir a galeria e permitir os recursos
@@ -68,67 +73,135 @@
         <ul>
             <li><strong>Assistente de enquadramento da câmera:</strong> a detecção de rostos
             acontece 100% no seu aparelho, usando o ML Kit do Google de forma offline. Nenhuma
-            imagem da câmera é enviada para a internet nesse recurso, e nada é armazenado.</li>
+            imagem da câmera é enviada para a internet nesse recurso, e nada é armazenado. Esse
+            recurso é diferente do <strong>assistente de câmera com inteligência
+            artificial</strong> (recurso Pro, descrito a seguir), que envia a cena para
+            processamento na nuvem.</li>
             <li><strong>Descrições e legendas geradas</strong> são guardadas apenas localmente,
             num banco de dados no seu aparelho, para não precisar processar o mesmo arquivo de
             novo.</li>
         </ul>
 
-        <h5 class="mt-3">Recursos de Inteligência Artificial (usam a API do Google Gemini)</h5>
+        <h5 class="mt-3">Recursos de Inteligência Artificial (processamento em nuvem)</h5>
         <p>Os recursos de <strong>descrição de imagens, audiodescrição de vídeos, leitura de
-        texto (OCR) e perguntas sobre a foto/cena</strong> funcionam por meio da <strong>API do
-        Google Gemini</strong>.</p>
+        texto (OCR), perguntas sobre a foto/cena, Explorador de Cena e o assistente de câmera
+        com inteligência artificial</strong> usam processamento em nuvem. Hoje, o provedor que
+        efetivamente recebe suas fotos e vídeos é o <strong>Google Gemini</strong> — o
+        aplicativo tem suporte interno a outros provedores de IA, mas nenhum deles está em uso
+        agora; se isso mudar no futuro, o provedor ativo continuará sendo informado nesta
+        política.</p>
+        <p>Como seus dados chegam até a IA depende do seu plano:</p>
         <ul>
-            <li>Esses recursos <strong>só funcionam depois que você configura a sua própria
-            chave de API do Google Gemini</strong> dentro do aplicativo. A chave é guardada de
-            forma segura apenas no seu aparelho (armazenamento protegido do sistema) e
-            <strong>não é enviada ao desenvolvedor</strong>.</li>
-            <li>Quando (e somente quando) você aciona um desses recursos, a <strong>foto, o
-            vídeo ou o quadro selecionado é enviado ao Google</strong> para ser processado e
-            devolver a descrição, a narração ou a resposta. O envio é feito por conexão
-            criptografada (HTTPS).</li>
-            <li>O aplicativo <strong>não retém essas imagens ou vídeos em servidores</strong>
-            após o processamento. O tratamento dos dados enviados ao Google é regido pelos
-            <strong>termos e pela política de privacidade da API do Google Gemini</strong>:
-                <ul>
-                    <li><a href="https://ai.google.dev/gemini-api/terms" target="_blank" rel="noopener">https://ai.google.dev/gemini-api/terms</a></li>
-                    <li><a href="https://policies.google.com/privacy" target="_blank" rel="noopener">https://policies.google.com/privacy</a></li>
-                </ul>
-            </li>
+            <li><strong>Gratuito, Pro Mensal ou Pro Anual:</strong> esses recursos só funcionam
+            depois que você configura a sua própria chave de API do Google Gemini dentro do
+            aplicativo. A chave é guardada de forma segura apenas no seu aparelho (armazenamento
+            protegido do sistema) e <strong>não é enviada ao desenvolvedor</strong>. Quando você
+            aciona um desses recursos, a foto, o vídeo ou o quadro selecionado é enviado
+            <strong>diretamente ao Google</strong>, por conexão criptografada (HTTPS).</li>
+            <li><strong>Plano Facilitador:</strong> você não precisa configurar nenhuma chave.
+            Quando você aciona um desses recursos — incluindo o fluxo contínuo do assistente de
+            câmera com IA, que usa uma conexão (WebSocket) para enviar quadros em tempo real — a
+            foto, o vídeo ou o quadro é enviado primeiro ao <strong>servidor próprio do
+            desenvolvedor</strong> (hospedado atrás da Cloudflare, que também processa o tráfego
+            em trânsito), que confirma sua assinatura e repassa o conteúdo ao provedor de IA em
+            uso (hoje, o Google Gemini).</li>
         </ul>
-        <p>Se você <strong>não configurar a chave</strong> e <strong>não usar</strong> esses
-        recursos, <strong>nenhuma foto ou vídeo sai do seu aparelho</strong>.</p>
+        <p>Em ambos os casos, suas fotos e vídeos <strong>não ficam retidos nos servidores de
+        processamento depois do uso</strong>. Já o <strong>texto gerado pela IA a partir
+        deles</strong> (a descrição, o OCR, a resposta, a legenda/audiodescrição) é tratado
+        assim:</p>
+        <ul>
+            <li>Nos planos Gratuito, Pro Mensal e Pro Anual, o resultado final fica guardado só
+            localmente, no seu aparelho — ver "Recursos que funcionam totalmente no seu
+            aparelho" acima.</li>
+            <li>No Plano Facilitador, o resultado fica guardado por um curto período no servidor
+            do desenvolvedor — principalmente para lidar com falhas de conexão, evitando cobrar
+            duas vezes pelo mesmo pedido se o aplicativo tentar de novo. Depois desse período,
+            ele é apagado ou anonimizado automaticamente: a descrição de imagem, o OCR e a
+            resposta a uma pergunta ficam retidos por um curto período (atualmente cerca de 15
+            minutos); a legenda/audiodescrição de vídeo fica retida por um período um pouco
+            maior (atualmente cerca de 48 horas), depois do qual o texto é removido — mesmo que
+            o registro da tarefa continue existindo, sem nenhum conteúdo sensível, apenas para
+            estatística agregada. Esses prazos vêm de parâmetros técnicos internos e podem
+            variar; o objetivo é sempre manter esse período o mais curto possível.</li>
+            <li>Além disso, e independente do seu plano, o vídeo em si (não o texto gerado) pode
+            ficar guardado por até 48 horas nos próprios servidores do Google, por política da
+            API do Gemini.</li>
+        </ul>
+        <p>O tratamento dos dados enviados ao provedor de IA é regido pelos termos e pela
+        política de privacidade dele — hoje, do Google Gemini:</p>
+        <ul>
+            <li><a href="https://ai.google.dev/gemini-api/terms" target="_blank" rel="noopener">https://ai.google.dev/gemini-api/terms</a></li>
+            <li><a href="https://policies.google.com/privacy" target="_blank" rel="noopener">https://policies.google.com/privacy</a></li>
+        </ul>
+        <p>Se você usa o plano Gratuito, Pro Mensal ou Pro Anual e <strong>não configurar a
+        chave</strong> e <strong>não usar</strong> esses recursos, <strong>nenhuma foto ou vídeo
+        sai do seu aparelho</strong>. No Plano Facilitador, o envio também só acontece quando
+        você aciona um recurso de IA.</p>
 
         <h4 class="mt-4">Compartilhamento de dados</h4>
         <p>O AcessGallery <strong>não vende seus dados</strong> e <strong>não os compartilha
-        para publicidade ou marketing</strong>. O único compartilhamento com terceiros é o
-        envio das fotos/vídeos ao <strong>Google Gemini</strong>, exclusivamente para executar
-        os recursos de IA que você acionar, conforme descrito acima.</p>
+        para publicidade ou marketing</strong>. O compartilhamento com terceiros depende do seu
+        plano, como descrito acima: nos planos Gratuito, Pro Mensal e Pro Anual, o único
+        compartilhamento é o envio direto das fotos/vídeos ao <strong>Google Gemini</strong>. No
+        <strong>Plano Facilitador</strong>, a mídia passa primeiro pelo <strong>servidor próprio
+        do desenvolvedor</strong> (hospedado atrás da <strong>Cloudflare</strong>, que processa
+        o tráfego em trânsito), que a repassa ao provedor de IA em uso (hoje, o Google Gemini).
+        Em todos os casos, o compartilhamento só acontece quando você aciona um recurso de IA.</p>
         <p>O compartilhamento de arquivos (por exemplo, exportar um vídeo em ZIP, ou
         compartilhar o log técnico de diagnóstico da tela de Backup) só acontece quando
         <strong>você</strong> inicia a ação e escolhe o destino. O log técnico fica salvo apenas
         no seu aparelho, é apagado a cada nova sessão do app e nunca contém sua chave de API
         nem o conteúdo de fotos/vídeos.</p>
 
-        <h4 class="mt-4">Assinatura Pro (compras no aplicativo)</h4>
-        <p>O AcessGallery oferece uma assinatura opcional ("Pro") que libera a descrição
-        automática da galeria, álbuns ilimitados (o plano gratuito tem limite de 5) e "Perguntar
-        sobre a foto/cena". A compra é processada inteiramente pelo <strong>Google Play
-        Faturamento (Google Play Billing)</strong>: o AcessGallery não recebe nem armazena dados
-        do seu pagamento (cartão, endereço de cobrança etc.). O aplicativo não tem servidor
-        próprio — ele apenas consulta o Google Play para saber se há uma assinatura ativa, e
-        guarda esse status localmente no aparelho. Dados de cobrança e histórico de compra são
-        tratados pela política de privacidade do Google:
+        <h4 class="mt-4">Planos e assinaturas (compras no aplicativo)</h4>
+        <p>O AcessGallery oferece três assinaturas opcionais, todas com os mesmos recursos:
+        descrição automática da galeria, álbuns ilimitados (o plano gratuito tem limite de 5),
+        "Perguntar sobre a foto/cena", Explorador de Cena (explorar a cena por toque) e o
+        assistente de câmera com inteligência artificial.</p>
+        <ul>
+            <li><strong>Pro Mensal</strong> e <strong>Pro Anual:</strong> você configura sua
+            própria chave de API do Google Gemini (ver seção anterior) — a assinatura libera os
+            recursos, mas o processamento de IA continua indo direto ao Google, com a sua
+            chave.</li>
+            <li><strong>Plano Facilitador:</strong> remove a necessidade de configurar uma chave
+            própria. A IA passa a rodar através do servidor próprio do desenvolvedor, como
+            explicado na seção anterior.</li>
+        </ul>
+        <p>A compra, em qualquer um dos três planos, é processada inteiramente pelo
+        <strong>Google Play Faturamento (Google Play Billing)</strong>: o AcessGallery não
+        recebe nem armazena dados do seu pagamento (cartão, endereço de cobrança etc.). Dados de
+        cobrança e histórico de compra são tratados pela política de privacidade do Google:
         <a href="https://policies.google.com/privacy" target="_blank" rel="noopener">https://policies.google.com/privacy</a></p>
+        <p>Para <strong>Pro Mensal</strong> e <strong>Pro Anual</strong>, o aplicativo não tem
+        servidor próprio envolvido na assinatura — ele apenas consulta o Google Play para saber
+        se há uma assinatura ativa, e guarda esse status localmente no aparelho.</p>
+        <p>Para o <strong>Plano Facilitador</strong>, o servidor próprio do desenvolvedor
+        participa da assinatura: ele confirma sua compra junto à Google Play Developer API
+        (nunca confia apenas no que o aplicativo informa) e, se válida, emite uma sessão própria
+        guardada de forma segura no seu aparelho. Para isso, enquanto a assinatura estiver
+        ativa, o servidor guarda: o token de compra do Google Play (cifrado), um identificador
+        do seu aparelho (usado também para limitar quantos aparelhos podem usar a mesma
+        assinatura) e contadores de uso (por exemplo, quantidade de chamadas feitas) para
+        aplicar os limites do plano. Esses dados não incluem nome, e-mail, CPF ou o conteúdo de
+        fotos/vídeos.</p>
 
         <h4 class="mt-4">Permissões e por que são usadas</h4>
         <ul>
             <li><strong>Fotos e vídeos (READ_MEDIA_IMAGES, READ_MEDIA_VIDEO, acesso
             parcial):</strong> exibir sua galeria e habilitar os recursos de acessibilidade.</li>
             <li><strong>Câmera (CAMERA):</strong> tirar fotos e usar o assistente de
-            enquadramento no aparelho.</li>
+            enquadramento (offline) ou o assistente de câmera com inteligência artificial
+            (nuvem, recurso Pro) no aparelho.</li>
             <li><strong>Internet (INTERNET, ACCESS_NETWORK_STATE):</strong> enviar
-            imagens/vídeos à API do Google Gemini apenas quando você usa os recursos de IA.</li>
+            imagens/vídeos ao provedor de IA (direto ou via servidor próprio, dependendo do seu
+            plano) apenas quando você usa os recursos de IA.</li>
+            <li><strong>Executar em primeiro plano / não deixar o aparelho dormir
+            (FOREGROUND_SERVICE_DATA_SYNC, WAKE_LOCK):</strong> manter o processamento da
+            audiodescrição de vídeo em andamento mesmo se a tela apagar ou você mude de
+            aplicativo.</li>
+            <li><strong>Notificações (POST_NOTIFICATIONS):</strong> avisar quando a
+            audiodescrição de um vídeo terminar de ser gerada.</li>
         </ul>
 
         <h4 class="mt-4">Dados de crianças</h4>
@@ -144,6 +217,14 @@
             momento, desativando os recursos de IA.</li>
             <li>Você pode desinstalar o aplicativo, o que remove os dados guardados localmente
             (incluindo as descrições em cache e a chave).</li>
+            <li>Se você é assinante do <strong>Plano Facilitador</strong>: os dados guardados no
+            servidor do desenvolvedor (token de compra, identificador do aparelho, contadores de
+            uso) permanecem enquanto a assinatura estiver ativa, e são apagados quando ela é
+            cancelada ou expira. O texto gerado pela IA a partir das suas fotos/vídeos
+            (descrição, OCR, resposta, legenda) é apagado ou anonimizado automaticamente pelo
+            servidor depois de um curto período, como explicado acima — independente de você
+            desinstalar o app ou não. Você também pode pedir a exclusão desses dados a qualquer
+            momento pelo e-mail de contato abaixo.</li>
         </ul>
 
         <h4 class="mt-4">Alterações nesta política</h4>
@@ -158,7 +239,7 @@
 
     <article id="en" lang="en">
         <h2 class="text-primary">Privacy Policy — AcessGallery</h2>
-        <p class="text-muted"><strong>Last updated: August 20, 2026</strong></p>
+        <p class="text-muted"><strong>Last updated: October 26, 2026</strong></p>
 
         <p>AcessGallery is an accessible photo and video gallery for blind and low-vision
         users. This policy explains what data the app accesses, how it is used, and who it is
@@ -173,9 +254,12 @@
         </ul>
 
         <h4 class="mt-4">Data the app accesses</h4>
-        <p>AcessGallery <strong>does not create an account, does not require login, and does
-        not collect personal identifiers</strong>. The app shows no ads and does not track your
-        activity.</p>
+        <p>AcessGallery <strong>does not create an account and does not require login</strong>.
+        For the vast majority of users, the app also does not collect any personal identifier.
+        The one exception is <strong>Facilitador Plan</strong> subscribers (see "Plans and
+        subscriptions" below): to validate that subscription, the developer's own server stores
+        a device identifier and your Google Play purchase token (encrypted) — never your name,
+        email, or government ID. The app shows no ads and does not track your activity.</p>
         <p>The app accesses:</p>
         <ul>
             <li><strong>Your photos and videos</strong>, to display the gallery and enable the
@@ -190,63 +274,126 @@
         <ul>
             <li><strong>Camera framing assistant:</strong> face detection runs 100% on your
             device using Google's ML Kit, offline. No camera image is sent to the internet, and
-            nothing is stored.</li>
+            nothing is stored. This is different from the <strong>AI camera assistant</strong>
+            (a Pro feature, described below), which sends the scene for cloud processing.</li>
             <li><strong>Generated descriptions and captions</strong> are stored only locally, in
             an on-device database, to avoid reprocessing the same file.</li>
         </ul>
 
-        <h5 class="mt-3">AI features (use the Google Gemini API)</h5>
-        <p>The <strong>image description, video audio-description, text reading (OCR), and
-        ask-about-the-photo/scene</strong> features work through the <strong>Google Gemini
-        API</strong>.</p>
+        <h5 class="mt-3">AI features (cloud processing)</h5>
+        <p>The <strong>image description, video audio-description, text reading (OCR),
+        ask-about-the-photo/scene, Scene Explorer, and AI camera assistant</strong> features use
+        cloud processing. Today, the provider that actually receives your photos and videos is
+        <strong>Google Gemini</strong> — the app has internal support for other AI providers,
+        but none of them is in use right now; if that changes in the future, the active
+        provider will keep being disclosed in this policy.</p>
+        <p>How your data reaches the AI depends on your plan:</p>
         <ul>
-            <li>These features <strong>only work after you configure your own Google Gemini API
-            key</strong> in the app. The key is stored securely on your device only (system
-            secure storage) and <strong>is not sent to the developer</strong>.</li>
-            <li>When (and only when) you trigger one of these features, the selected
-            <strong>photo, video, or frame is sent to Google</strong> for processing to return
-            the description, narration, or answer, over an encrypted connection (HTTPS).</li>
-            <li>The app <strong>does not retain those images or videos on servers</strong>
-            after processing. Data sent to Google is governed by the <strong>Google Gemini API
-            terms and privacy policy</strong>:
-                <ul>
-                    <li><a href="https://ai.google.dev/gemini-api/terms" target="_blank" rel="noopener">https://ai.google.dev/gemini-api/terms</a></li>
-                    <li><a href="https://policies.google.com/privacy" target="_blank" rel="noopener">https://policies.google.com/privacy</a></li>
-                </ul>
-            </li>
+            <li><strong>Free, Pro Monthly, or Pro Yearly:</strong> these features only work
+            after you configure your own Google Gemini API key in the app. The key is stored
+            securely on your device only (system secure storage) and <strong>is not sent to the
+            developer</strong>. When you trigger one of these features, the selected photo,
+            video, or frame is sent <strong>directly to Google</strong>, over an encrypted
+            connection (HTTPS).</li>
+            <li><strong>Facilitador Plan:</strong> you do not need to configure any key. When
+            you trigger one of these features — including the continuous AI camera assistant
+            stream, which uses a WebSocket connection to send frames in real time — the photo,
+            video, or frame is sent first to the <strong>developer's own server</strong>
+            (hosted behind Cloudflare, which also processes traffic in transit), which confirms
+            your subscription and forwards the content to the AI provider in use (today, Google
+            Gemini).</li>
         </ul>
-        <p>If you <strong>do not configure a key</strong> and <strong>do not use</strong> these
-        features, <strong>no photo or video leaves your device.</strong></p>
+        <p>In both cases, your photos and videos <strong>are not retained on the processing
+        servers after use</strong>. The <strong>text the AI generates from them</strong> (the
+        description, OCR, answer, caption/audio-description), however, is handled like this:</p>
+        <ul>
+            <li>On the Free, Pro Monthly, and Pro Yearly plans, the final result is stored only
+            locally, on your device — see "Features that run entirely on your device"
+            above.</li>
+            <li>On the Facilitador Plan, the result is kept for a short period on the
+            developer's server — mainly to handle connection failures, so you are not billed
+            twice for the same request if the app retries. After that period, it is
+            automatically deleted or anonymized: the image description, OCR, and question
+            answer are kept for a short period (currently about 15 minutes); the video
+            caption/audio-description is kept for a somewhat longer period (currently about 48
+            hours), after which the text is removed — even though the job record itself keeps
+            existing, with no sensitive content, only for aggregated statistics. These windows
+            come from internal technical parameters and may vary; the goal is always to keep
+            this period as short as possible.</li>
+            <li>Separately, and regardless of your plan, the video file itself (not the
+            generated text) may be kept for up to 48 hours on Google's own servers, under the
+            Gemini API's own policy.</li>
+        </ul>
+        <p>Data sent to the AI provider is governed by that provider's own terms and privacy
+        policy — today, Google Gemini's:</p>
+        <ul>
+            <li><a href="https://ai.google.dev/gemini-api/terms" target="_blank" rel="noopener">https://ai.google.dev/gemini-api/terms</a></li>
+            <li><a href="https://policies.google.com/privacy" target="_blank" rel="noopener">https://policies.google.com/privacy</a></li>
+        </ul>
+        <p>If you use the Free, Pro Monthly, or Pro Yearly plan and <strong>do not configure a
+        key</strong> and <strong>do not use</strong> these features, <strong>no photo or video
+        leaves your device.</strong> On the Facilitador Plan, sending also only happens when
+        you trigger an AI feature.</p>
 
         <h4 class="mt-4">Data sharing</h4>
         <p>AcessGallery <strong>does not sell your data</strong> and <strong>does not share it
-        for advertising or marketing</strong>. The only third-party sharing is sending your
-        photos/videos to <strong>Google Gemini</strong>, solely to run the AI features you
-        trigger, as described above.</p>
+        for advertising or marketing</strong>. Third-party sharing depends on your plan, as
+        described above: on the Free, Pro Monthly, and Pro Yearly plans, the only sharing is
+        sending photos/videos directly to <strong>Google Gemini</strong>. On the
+        <strong>Facilitador Plan</strong>, media goes first to the <strong>developer's own
+        server</strong> (hosted behind <strong>Cloudflare</strong>, which processes traffic in
+        transit), which forwards it to the AI provider in use (today, Google Gemini). In all
+        cases, sharing only happens when you trigger an AI feature.</p>
         <p>File sharing (for example, exporting a video as a ZIP, or sharing the technical
         diagnostic log from the Backup screen) happens only when <strong>you</strong> start the
         action and choose the destination. The technical log is stored only on your device, is
         cleared on every new app session, and never contains your API key or photo/video
         content.</p>
 
-        <h4 class="mt-4">Pro subscription (in-app purchases)</h4>
-        <p>AcessGallery offers an optional "Pro" subscription that unlocks automatic gallery
-        descriptions, unlimited albums (the free plan is limited to 5), and "ask about the
-        photo/scene". The purchase is processed entirely by <strong>Google Play Billing</strong>:
-        AcessGallery never receives or stores your payment data (card, billing address, etc.).
-        The app has no backend of its own — it only queries Google Play to check whether a
-        subscription is active, and caches that status locally on your device. Billing data and
-        purchase history are handled under Google's privacy policy:
+        <h4 class="mt-4">Plans and subscriptions (in-app purchases)</h4>
+        <p>AcessGallery offers three optional subscriptions, all unlocking the same features:
+        automatic gallery descriptions, unlimited albums (the free plan is limited to 5), "ask
+        about the photo/scene", Scene Explorer (explore the scene by touch), and the AI camera
+        assistant.</p>
+        <ul>
+            <li><strong>Pro Monthly</strong> and <strong>Pro Yearly:</strong> you configure your
+            own Google Gemini API key (see the previous section) — the subscription unlocks the
+            features, but AI processing still goes directly to Google, using your key.</li>
+            <li><strong>Facilitador Plan:</strong> removes the need to configure your own key.
+            The AI instead runs through the developer's own server, as explained in the
+            previous section.</li>
+        </ul>
+        <p>The purchase, on any of the three plans, is processed entirely by <strong>Google
+        Play Billing</strong>: AcessGallery never receives or stores your payment data (card,
+        billing address, etc.). Billing data and purchase history are handled under Google's
+        privacy policy:
         <a href="https://policies.google.com/privacy" target="_blank" rel="noopener">https://policies.google.com/privacy</a></p>
+        <p>For <strong>Pro Monthly</strong> and <strong>Pro Yearly</strong>, the app has no
+        backend of its own involved in the subscription — it only queries Google Play to check
+        whether a subscription is active, and caches that status locally on your device.</p>
+        <p>For the <strong>Facilitador Plan</strong>, the developer's own server takes part in
+        the subscription: it confirms your purchase with the Google Play Developer API (it
+        never just trusts what the app reports) and, if valid, issues its own session, stored
+        securely on your device. To do this, while the subscription is active, the server
+        stores: your Google Play purchase token (encrypted), a device identifier (also used to
+        cap how many devices can use the same subscription), and usage counters (for example,
+        how many calls you've made) to enforce the plan's limits. This data never includes your
+        name, email, government ID, or the content of your photos/videos.</p>
 
         <h4 class="mt-4">Permissions and why they are used</h4>
         <ul>
             <li><strong>Photos and videos:</strong> to display your gallery and enable
             accessibility features.</li>
-            <li><strong>Camera:</strong> to take photos and run the on-device framing
-            assistant.</li>
-            <li><strong>Internet / network state:</strong> to send images/videos to the Google
-            Gemini API only when you use the AI features.</li>
+            <li><strong>Camera:</strong> to take photos and run either the on-device framing
+            assistant (offline) or the AI camera assistant (cloud, Pro feature).</li>
+            <li><strong>Internet / network state:</strong> to send images/videos to the AI
+            provider (directly, or via the developer's own server, depending on your plan) only
+            when you use the AI features.</li>
+            <li><strong>Run in the foreground / keep the device awake
+            (FOREGROUND_SERVICE_DATA_SYNC, WAKE_LOCK):</strong> keep video audio-description
+            processing running even if the screen turns off or you switch apps.</li>
+            <li><strong>Notifications (POST_NOTIFICATIONS):</strong> notify you when a video's
+            audio-description finishes generating.</li>
         </ul>
 
         <h4 class="mt-4">Children's data</h4>
@@ -261,6 +408,13 @@
             the AI features.</li>
             <li>You can uninstall the app, which removes locally stored data (cached
             descriptions and the key).</li>
+            <li>If you are a <strong>Facilitador Plan</strong> subscriber: data stored on the
+            developer's server (purchase token, device identifier, usage counters) remains
+            while the subscription is active, and is deleted once it is cancelled or expires.
+            The text the AI generates from your photos/videos (description, OCR, answer,
+            caption) is automatically deleted or anonymized by the server after a short period,
+            as explained above — regardless of whether you uninstall the app. You can also
+            request deletion of this data at any time via the contact email below.</li>
         </ul>
 
         <h4 class="mt-4">Changes to this policy</h4>
